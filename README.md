@@ -1,20 +1,24 @@
-# Telco Customer Retention Analytics & Visual Storytelling
+# Telco Customer Retention Analytics, Storytelling & Hypothesis Testing
 
-This repository contains the end-to-end data preparation, exploratory data analysis, and advanced multi-variable data storytelling pipeline for the **Telco Customer Churn Dataset** (7,043 subscriber records across 21 attributes).
+This repository contains the end-to-end data processing, exploratory analysis, multi-variable visual storytelling, and inferential statistical testing pipeline for the **Telco Customer Churn Dataset** (7,043 subscriber records across 21 attributes).
 
 ---
 
 ## Repository Structure
 
 ```text
-├── analysis.py                         # Week 1: Data Acquisition & Baseline Cleaning
-├── week2_analysis.py                   # Week 2: Multi-Variable Visualizations Pipeline
+├── analysis.py                         # Week 1: Ingestion & Baseline Cleaning
+├── week2_analysis.py                   # Week 2: Advanced Visualizations Pipeline
+├── week3_analysis.py                   # Week 3: Inferential Hypothesis Testing Pipeline
 ├── requirements.txt                    # Project Dependencies
-├── viz1_compound_contract_internet_risk.png # Compound Attrition Risk Bar Chart
-├── viz2_monthly_charges_payment_violin.png  # Price Elasticity Across Payment Channels
-├── viz3_survival_trajectory_tenure.png      # Stepped Retention Survival Trajectory
-├── viz4_service_bundling_heatmap.png        # Value-Add Ecosystem Protection Matrix
-├── viz5_tenure_vs_monthly_scatter.png       # High-Value Risk Matrix Scatter Plot
+├── viz1_compound_contract_internet_risk.png # Week 2 Plot 1
+├── viz2_monthly_charges_payment_violin.png  # Week 2 Plot 2
+├── viz3_survival_trajectory_tenure.png      # Week 2 Plot 3
+├── viz4_service_bundling_heatmap.png        # Week 2 Plot 4
+├── viz5_tenure_vs_monthly_scatter.png       # Week 2 Plot 5
+├── stat_viz1_contract_chi2.png         # Week 3 Plot 1 (Chi-Square)
+├── stat_viz2_monthly_charges_ttest.png # Week 3 Plot 2 (Welch's t-Test)
+├── stat_viz3_payment_tenure_anova.png  # Week 3 Plot 3 (ANOVA)
 └── README.md                           # Master Project Documentation
 
 
@@ -61,6 +65,25 @@ Survival Modeling (Cox Proportional Hazards): Fit a Cox Proportional Hazards mod
 Predictive Classification Pipelines: Train XGBoost, LightGBM, and Random Forest models applying SMOTE (Synthetic Minority Over-sampling Technique) to handle target class imbalance (73.5% / 26.5%).
 
 Customer Lifetime Value (CLV) Segmentation: Perform K-Means clustering on behavioral and spend metrics to build a dollar-quantified CLV risk scoring matrix.
+
+
+Week 3 Deliverables: Inferential Statistical Hypothesis Testing
+1. Chi-Square ($\chi^2$) Test of Independence (Contract Horizon vs. Churn)
+  Formal Hypotheses: $H_0$: Contract type and Churn status are independent vs. $H_1$: Significant structural association.
+  Statistical Metrics: $\chi^2 = 1184.55$, $df = 2$, $p = 7.32 \times 10^{-258}$ ($p < 0.0001$).
+  Effect Size: Cramér's $V = 0.410$ (Large Effect Size).
+  Finding: Reject $H_0$. Month-to-month contract holders suffer a 42.71% churn rate, compared to 2.83% for Two-Year contract holders.
+2. Welch's Two-Sample $t$-Test & Mann-Whitney U Test (Monthly Charges by Churn)
+  Formal Hypotheses: $H_0: \mu_{\text{churned}} \le \mu_{\text{retained}}$ vs. $H_1: \mu_{\text{churned}} > \mu_{\text{retained}}$.
+  Statistical Metrics: Welch $t = 18.27$, $df = 4212.8$, $p = 2.74 \times 10^{-72}$ ($p < 0.0001$).Mann-Whitney $U = 3,456,120.0$, $p < 0.0001$.
+  Effect Size & CI: Cohen's $d = 0.445$. Mean difference = $+\$13.17/\text{month}$ ($95\%\text{ CI}: [\$11.76, \$14.58]$).
+  Finding: Reject $H_0$. Churned customers pay significantly higher average monthly charges ($\$74.44$) than retained customers ($\$61.27$).
+3. One-Way ANOVA & Post-Hoc Tukey HSD (Tenure across Payment Channels)
+  Formal Hypotheses: $H_0: \mu_1 = \mu_2 = \mu_3 = \mu_4$ vs. $H_1$: At least one group mean differs.
+  Statistical Metrics: $F(3, 7039) = 464.22$, $p = 3.22 \times 10^{-267}$ ($p < 0.0001$). Eta-squared $\eta^2 = 0.165$.
+  Tukey HSD Key Result: Automated payment methods (Bank transfer and Credit card) yield over 18 months higher mean tenure than manual Electronic check payments ($p < 0.0001$).
+  Finding: Reject $H_0$. Payment channel choice accounts for $16.5\%$ of total subscriber tenure variance.
+
 
 Execution Instructions
 Bash
