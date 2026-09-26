@@ -1,24 +1,23 @@
-# Telco Customer Retention Analytics, Storytelling & Hypothesis Testing
+# Telco Customer Retention Analytics, Hypothesis Testing & Machine Learning
 
-This repository contains the end-to-end data processing, exploratory analysis, multi-variable visual storytelling, and inferential statistical testing pipeline for the **Telco Customer Churn Dataset** (7,043 subscriber records across 21 attributes).
+This repository contains the end-to-end data processing, exploratory analysis, visual storytelling, inferential statistical testing, and predictive machine learning pipeline for the **Telco Customer Churn Dataset** (7,043 subscriber records across 21 attributes).
 
 ---
 
 ## Repository Structure
 
 ```text
-├── analysis.py                         # Week 1: Ingestion & Baseline Cleaning
-├── week2_analysis.py                   # Week 2: Advanced Visualizations Pipeline
-├── week3_analysis.py                   # Week 3: Inferential Hypothesis Testing Pipeline
+├── analysis.py                         # Week 1: Data Acquisition & Baseline Cleaning
+├── week2_analysis.py                   # Week 2: Multi-Variable Visual Storytelling
+├── week3_analysis.py                   # Week 3: Inferential Statistical Hypothesis Testing
+├── week4_analysis.py                   # Week 4: Machine Learning Model Development & Evaluation
 ├── requirements.txt                    # Project Dependencies
-├── viz1_compound_contract_internet_risk.png # Week 2 Plot 1
-├── viz2_monthly_charges_payment_violin.png  # Week 2 Plot 2
-├── viz3_survival_trajectory_tenure.png      # Week 2 Plot 3
-├── viz4_service_bundling_heatmap.png        # Week 2 Plot 4
-├── viz5_tenure_vs_monthly_scatter.png       # Week 2 Plot 5
-├── stat_viz1_contract_chi2.png         # Week 3 Plot 1 (Chi-Square)
-├── stat_viz2_monthly_charges_ttest.png # Week 3 Plot 2 (Welch's t-Test)
-├── stat_viz3_payment_tenure_anova.png  # Week 3 Plot 3 (ANOVA)
+├── stat_viz1_contract_chi2.png         # Statistical Plot 1 (Chi-Square)
+├── stat_viz2_monthly_charges_ttest.png # Statistical Plot 2 (Welch's t-Test)
+├── stat_viz3_payment_tenure_anova.png  # Statistical Plot 3 (ANOVA)
+├── eval_viz1_confusion_matrices.png    # ML Plot 1 (Normalized Confusion Matrices)
+├── eval_viz2_roc_pr_curves.png         # ML Plot 2 (ROC & PR Curves)
+├── eval_viz3_feature_importance.png    # ML Plot 3 (Gini Feature Importances)
 └── README.md                           # Master Project Documentation
 
 
@@ -83,6 +82,12 @@ Week 3 Deliverables: Inferential Statistical Hypothesis Testing
   Statistical Metrics: $F(3, 7039) = 464.22$, $p = 3.22 \times 10^{-267}$ ($p < 0.0001$). Eta-squared $\eta^2 = 0.165$.
   Tukey HSD Key Result: Automated payment methods (Bank transfer and Credit card) yield over 18 months higher mean tenure than manual Electronic check payments ($p < 0.0001$).
   Finding: Reject $H_0$. Payment channel choice accounts for $16.5\%$ of total subscriber tenure variance.
+
+Week 4 Deliverables: Machine Learning Model BenchmarkingModel Comparison Summary ($N_{\text{test}} = 1,409$)MetricBaseline Logistic RegressionBalanced Random ForestSelected Production ModelAccuracy80.41%76.86%Logistic Regression (Baseline)Precision (Churn Class)65.80%54.72%Logistic RegressionRecall (Sensitivity)54.28%76.20%Balanced Random Forest (+21.92%)F1-Score (Churn Class)59.49%63.69%Balanced Random ForestROC-AUC0.84520.8481Balanced Random ForestFinancial Loss ($N_{\text{test}}$)$166,120$106,450Balanced Random Forest (Saves $59,670)
+Visual Diagnostics
+  Confusion Matrix Comparison (eval_viz1_confusion_matrices.png): Demonstrates that the Balanced Random Forest captures 76.20% of true churners, drastically reducing False Negatives compared to Logistic Regression (54.28% Recall).
+  ROC & PR Curves (eval_viz2_roc_pr_curves.png): Demonstrates superior Precision-Recall trade-offs for the Random Forest model across high-Recall operational thresholds.
+  Top Feature Importances (eval_viz3_feature_importance.png): Identifies TotalCharges, tenure, MonthlyCharges, and Contract_Two year as the primary predictive features driving model classification decisions.
 
 
 Execution Instructions
