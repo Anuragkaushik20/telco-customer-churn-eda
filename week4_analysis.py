@@ -179,7 +179,7 @@ def train_and_evaluate():
     feat_imp = pd.Series(importances, index=feature_names).sort_values(ascending=False).head(10)
     
     plt.figure(figsize=(10, 5.5))
-    sns.barplot(x=feat_imp.values, y=feat_imp.index, palette='Viridis')
+    sns.barplot(x=feat_imp.values, y=feat_imp.index, hue=feat_imp.index, palette='viridis', legend=False)
     plt.title('Top 10 Feature Importances (Balanced Random Forest)', fontsize=13, fontweight='bold', pad=12)
     plt.xlabel('Gini Importance Score', fontsize=11)
     plt.ylabel('Feature Name', fontsize=11)
