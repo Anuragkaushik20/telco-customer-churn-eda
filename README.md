@@ -1,25 +1,24 @@
-# Telco Customer Retention Analytics, Hypothesis Testing & Machine Learning
+# Telco Customer Retention Analytics, Inferential Testing & Predictive Machine Learning
 
-This repository contains the end-to-end data processing, exploratory analysis, visual storytelling, inferential statistical testing, and predictive machine learning pipeline for the **Telco Customer Churn Dataset** (7,043 subscriber records across 21 attributes).
+This repository houses the complete end-to-end data science capstone project for the **Telco Customer Churn Dataset** ($N = 7,043$ subscriber records across 21 variables). The project integrates data preprocessing, multi-variable exploratory visual storytelling, inferential hypothesis testing, supervised machine learning, cost-sensitive decision optimization, and strategic business recommendations.
 
 ---
 
-## Repository Structure
+## 📁 Repository File Tree
 
 ```text
-├── analysis.py                         # Week 1: Data Acquisition & Baseline Cleaning
+├── analysis.py                         # Week 1: Data Acquisition & Baseline Preprocessing
 ├── week2_analysis.py                   # Week 2: Multi-Variable Visual Storytelling
 ├── week3_analysis.py                   # Week 3: Inferential Statistical Hypothesis Testing
-├── week4_analysis.py                   # Week 4: Machine Learning Model Development & Evaluation
+├── week4_analysis.py                   # Week 4: Machine Learning Pipeline & Cost Evaluation
 ├── requirements.txt                    # Project Dependencies
-├── stat_viz1_contract_chi2.png         # Statistical Plot 1 (Chi-Square)
-├── stat_viz2_monthly_charges_ttest.png # Statistical Plot 2 (Welch's t-Test)
-├── stat_viz3_payment_tenure_anova.png  # Statistical Plot 3 (ANOVA)
-├── eval_viz1_confusion_matrices.png    # ML Plot 1 (Normalized Confusion Matrices)
-├── eval_viz2_roc_pr_curves.png         # ML Plot 2 (ROC & PR Curves)
-├── eval_viz3_feature_importance.png    # ML Plot 3 (Gini Feature Importances)
+├── stat_viz1_contract_chi2.png         # Week 3 Plot 1 (Chi-Square)
+├── stat_viz2_monthly_charges_ttest.png # Week 3 Plot 2 (Welch's t-Test)
+├── stat_viz3_payment_tenure_anova.png  # Week 3 Plot 3 (ANOVA)
+├── eval_viz1_confusion_matrices.png    # Week 4 Plot 1 (Normalized Confusion Matrices)
+├── eval_viz2_roc_pr_curves.png         # Week 4 Plot 2 (ROC & PR Curves)
+├── eval_viz3_feature_importance.png    # Week 4 Plot 3 (Gini Feature Importances)
 └── README.md                           # Master Project Documentation
-
 
 
 Week 1 Overview: Data Integrity & Cleaning Audit
@@ -89,6 +88,12 @@ Visual Diagnostics
   ROC & PR Curves (eval_viz2_roc_pr_curves.png): Demonstrates superior Precision-Recall trade-offs for the Random Forest model across high-Recall operational thresholds.
   Top Feature Importances (eval_viz3_feature_importance.png): Identifies TotalCharges, tenure, MonthlyCharges, and Contract_Two year as the primary predictive features driving model classification decisions.
 
+
+1. Inferential Statistical Hypothesis Testing Results
+Chi-Square Test ($\chi^2 = 1,184.55, p < 0.0001, V = 0.410$): Proves strong dependence between Contract Type and Churn (42.71% churn in Month-to-Month vs 2.83% in Two-Year).Welch's t-Test ($t = 18.27, p < 0.0001, d = 0.445$): Demonstrates that churners face significantly higher monthly charges ($\mu = \$74.44$) than retained accounts ($\mu = \$61.27$).One-Way ANOVA ($F = 464.22, p < 0.0001, \eta^2 = 0.165$): Confirms that electronic check payment users exhibit lower tenure ($\mu = 24.7$m) than automatic bank transfer subscribers ($\mu = 43.7$m).
+
+ Strategic Business Recommendations
+Contract Migration Campaigns: Offer a $50 bill credit to Month-to-Month subscribers who convert to 1-year or 2-year contracts.Fiber Optic Onboarding & Support: Bundle complimentary Online Security and Tech Support to reduce the 41.8% Fiber Optic churn rate.Automated Payment Incentive: Provide a $5/month discount for switching from Electronic Check to automated ACH/Credit Card payment methods.Cost-Sensitive Thresholding: Deploy early interventions using the mathematically derived optimal threshold $\tau^* = \frac{C_{\text{FP}}}{C_{\text{FP}} + C_{\text{FN}}} \approx 0.0337$.
 
 Execution Instructions
 Bash
